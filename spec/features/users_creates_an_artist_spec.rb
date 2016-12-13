@@ -5,7 +5,7 @@ RSpec.feature "User submits a new artist" do
     artist_name = "Caamp"
     artist_image_path = "https://i.ytimg.com/vi/Glf6qmJ2dm8/maxresdefault.jpg"
 
-    visit '/artists'
+    visit artists_path
     click_on 'New Artist'
     fill_in "artist_name", with: artist_name
     fill_in "artist_image_path", with: artist_image_path
