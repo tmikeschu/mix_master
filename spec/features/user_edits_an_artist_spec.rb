@@ -7,6 +7,7 @@ RSpec.feature "User edits an artist" do
   end
 
   scenario "they update an artists' info" do
+    old_image_path = @artist.image_path
     old_name = @artist.name
     new_name = "Borns"
     visit artists_path
@@ -18,6 +19,7 @@ RSpec.feature "User edits an artist" do
     expect(page).to have_content new_name
     expect(page).to_not have_content old_name
     expect(page).to have_css "img[src=\"#{@artist.image_path}\"]"
+    expect(old_image_path).to eq(@artist.image_path)
   end
 
   context "when they update invalid data" do
