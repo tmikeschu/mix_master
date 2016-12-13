@@ -13,4 +13,14 @@ RSpec.feature "User submits a new artist" do
     expect(page).to have_content artist_name
     expect(page).to have_css "img[src=\"#{artist_image_path}\"]"
   end
+  
+  scenario "the submitted data is invalid"do
+    artist_image_path = "https://i.ytimg.com/vi/Glf6qmJ2dm8/maxresdefault.jpg"
+
+    visit '/artists'
+    click_on 'New Artist'
+    fill_in "artist_image_path", with: artist_image_path
+    click_on "Create Artist"
+    expect(page).to have_content "Name can't be blank"
+  end
 end
