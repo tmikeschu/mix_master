@@ -1,4 +1,7 @@
 <h1>Add a Song</h1>
+
+<%= render partial: "shared/errors"%>
+
 <%= form_for [@artist, @song] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
