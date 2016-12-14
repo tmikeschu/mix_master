@@ -19,6 +19,18 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
   end
+
+  def edit
+    @song   = Song.find(params[:id])
+    @artist = @song.artist
+  end
+
+  def update
+    @song   = Song.find(params[:id])
+    @song.update(song_params)
+    @artist = @song.artist
+    redirect_to artist_song_path(@artist, @song)
+  end
   
   private
     def set_artist
