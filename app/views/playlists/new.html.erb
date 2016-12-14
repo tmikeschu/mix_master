@@ -7,7 +7,7 @@
       <%= check_box_tag(:song_ids,
                         song.id,
                         false,
-                        name: "playlist[:song_ids][]",
+                        :name => "playlist[song_ids][]",
                         id: "song-#{song.id}") %>
       <%= song.title %>
     </div>

@@ -18,6 +18,6 @@ class PlaylistsController < ApplicationController
 
   private
     def playlist_params
-      params.require(:playlist).permit(:name, song_ids: [])
+      params.require(:playlist).permit(:name, :song_ids => [])
     end
 end
