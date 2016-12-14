@@ -1,13 +1,22 @@
 require "factory_girl_rails"
 
 FactoryGirl.define do
+
   factory :song do
-    title "MyString"
+    title "Song1"
+    artist
   end
+  
   factory :artist do
     sequence :name do |n| 
       "Caamp #{n}"
     end
     image_path "https://i.ytimg.com/vi/Glf6qmJ2dm8/maxresdefault.jpg"
+    factory :artist_with_songs do
+      after(:create) do |artist|
+        create_list(:song, 2, artist: artist)
+      end
+    end
   end
+
 end
