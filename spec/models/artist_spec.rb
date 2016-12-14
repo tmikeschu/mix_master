@@ -6,4 +6,9 @@ RSpec.describe Artist, type: :model do
     it {is_expected.to validate_presence_of(:image_path)}
     it {is_expected.to validate_uniqueness_of(:name)}
   end
+
+  context 'associations' do
+    it {should have_many(:songs)}
+  end
+  
 end
