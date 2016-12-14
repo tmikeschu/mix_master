@@ -39,5 +39,8 @@ RSpec.feature "User edits a playlist" do
     expect(page).to have_content new_playlist_name
     expect(page).to have_link new_song.title, song_path(new_song)
     expect(page).to_not have_link existing_song.title, song_path(existing_song)
+    @playlist.songs[1..-1].each do |song|
+      expect(page).to have_link song.title, song_path(song)
+    end
   end
 end
