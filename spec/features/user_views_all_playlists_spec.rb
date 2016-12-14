@@ -1,10 +1,3 @@
-=begin 
-As a user
-Given that playlists exist in the database
-When I visit the playlists index
-Then I should see each playlist's name
-And each name should link to that playlist's individual page
-=end 
 require 'rails_helper'
 
 RSpec.feature "User views all playlists" do
@@ -27,7 +20,6 @@ RSpec.feature "User views all playlists" do
   end
 
   it "and a playlist link takes them to the show page for that playlist" do
-    save_and_open_page
     click_on @playlists.first.name
     expect(current_path).to eq playlist_path(@playlists.first)
   end
