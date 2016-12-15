@@ -1,7 +1,11 @@
 class SongsController < ApplicationController
 
-  before_action :set_artist, only: [:new, :create]
-  
+  before_action :set_artist, only: [:new, :create, :index]
+   
+  def index
+    @songs = @artist.songs
+  end
+
   def new
     @song = @artist.songs.new
   end
