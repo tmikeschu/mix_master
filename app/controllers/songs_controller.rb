@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
 
-  before_action :set_artist, only: [:new, :create, :index]
+  before_action :set_artist, only: [:new, :create, :index, :destroy]
    
   def index
     @songs = @artist.songs
@@ -35,7 +35,14 @@ class SongsController < ApplicationController
     @artist = @song.artist
     redirect_to artist_song_path(@artist, @song)
   end
-  
+
+  def destroy
+    song = Song.find(params[:id])
+    song.destroy
+    # this worked without setting the song variable?
+    redirect_to artist_path(@artist)
+  end
+
   private
     def set_artist
       @artist = Artist.find(params[:artist_id])
