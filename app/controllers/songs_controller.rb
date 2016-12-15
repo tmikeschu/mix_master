@@ -1,7 +1,11 @@
 class SongsController < ApplicationController
 
-  before_action :set_artist, only: [:new, :create]
-  
+  before_action :set_artist, only: [:new, :create, :index]
+   
+  def index
+    @songs = @artist.songs
+  end
+
   def new
     @song = @artist.songs.new
   end
@@ -18,6 +22,18 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+  end
+
+  def edit
+    @song   = Song.find(params[:id])
+    @artist = @song.artist
+  end
+
+  def update
+    @song   = Song.find(params[:id])
+    @song.update(song_params)
+    @artist = @song.artist
+    redirect_to artist_song_path(@artist, @song)
   end
   
   private

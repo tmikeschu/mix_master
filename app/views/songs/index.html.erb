@@ -1,0 +1,9 @@
+<h1>All Songs for <%= @artist.name%></h1>
+
+<ul>
+  <% alphabetize_songs(@songs).each do |song| %>
+    <li>
+      <%= link_to song.title, song_path(song) %>
+    </li>
+  <% end %>
+</ul>
